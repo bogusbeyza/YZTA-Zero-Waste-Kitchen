@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarif Sihirbazı</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div id="splash-screen">
+        <img src="logo.png" alt="Logo"> 
+        <p class="splash-info">Mutfağınızdaki malzemelerle harikalar yaratın!</p>
+        <p class="splash-info small">İsrafı önleyin, lezzetli ve sürdürülebilir öğünler hazırlayın.</p>
+        <div class="loader"></div>
+    </div>
+
+    <div id="main-content" style="display: none;">
+        <header>
+            <div class="header-inner">
+                <img src="css/logo.png" alt="Site Logosu" class="logo" />
+                <div class="header-text">
+                    <h1>Atıksız Mutfak 🍳</h1>
+                    <p>Mutfağındaki Malzemelerle Yaratıcı Öğünler</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="main-layout"> 
+                <div class="form-column"> 
+                    <form id="recipe-form">
+                        <h2>Tarif Kriterleri</h2>
+
+                        <div class="form-group">
+                            <label for="meal-type">Öğün Seçimi:</label>
+                            <select id="meal-type" name="meal-type" required>
+                                <option value="Farketmez">Farketmez</option>
+                                <option value="Kahvaltı" selected>Kahvaltı</option>
+                                <option value="Öğle Yemeği">Öğle Yemeği</option>
+                                <option value="Akşam Yemeği">Akşam Yemeği</option>
+                                <option value="Atıştırmalık">Atıştırmalık</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ingredients">Elimde Ne Var? (Virgülle ayırın):</label>
+                            <textarea id="ingredients" name="ingredients" placeholder="örn: 2 kabak, 1 kase yoğurt, 3 yumurta, biraz dereotu" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="diet-preference">Diyet Tercihi:</label>
+                            <select id="diet-preference" name="diet-preference">
+                                <option value="Yok" selected>Yok</option>
+                                <option value="Vegan">Vegan</option>
+                                <option value="Vejetaryen">Vejetaryen</option>
+                                <option value="Glutensiz">Glutensiz</option>
+                                <option value="Laktozsuz">Laktozsuz</option>
+                                <option value="Düşük Karbonhidrat">Düşük Karbonhidrat</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="people-count">Kişi Sayısı:</label>
+                            <input type="number" id="people-count" name="people-count" value="2" min="1" max="12" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dish-type">Yemek Türü:</label>
+                            <select id="dish-type" name="dish-type">
+                                <option value="Farketmez" selected>Farketmez</option>
+                                <option value="Çorba">Çorba</option>
+                                <option value="Salata">Salata</option>
+                                <option value="Ana Yemek">Ana Yemek</option>
+                                <option value="Tatlı">Tatlı</option>
+                                <option value="Ara Sıcak">Ara Sıcak</option>
+                                <option value="İçecek">İçecek</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prep-time">Maksimum Hazırlama Süresi:</label>
+                            <select id="prep-time" name="prep-time">
+                                <option value="Farketmez" selected>Farketmez</option>
+                                <option value="15 Dakikadan Az">15 Dakikadan Az</option>
+                                <option value="30 Dakikadan Az">30 Dakikadan Az</option>
+                                <option value="1 Saatten Az">1 Saatten Az</option>
+                                <option value="1-2 Saat">1-2 Saat</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" id="generate-recipe">Tarif Oluştur</button>
+                    </form>
+                </div> 
+
+                <div class="output-column"> 
+                    <div id="recipe-output" class="recipe">
+                        <h2>Oluşturulan Tarif</h2>
+                        <div id="recipe-details">
+                            <p>Malzemelerinizi girin ve tarif oluşturun!</p>
+                        </div>
+                        <div class="recipe-actions" style="margin-top: 20px;">
+                             <button id="new-recipe" class="secondary" style="display: none;">Beğenmedim, Yenisini Oluştur</button>
+                             <button id="add-favorite" class="tertiary" style="display: none;">Favorilere Ekle</button>
+                        </div>
+                    </div>
+
+                    <h2>İsraf Önleme İpuçları</h2>
+                    <div id="tips-output" class="tip" style="display: none;">
+                        <h3>💡 Akıllı İsraf Önleme İpuçları</h3>
+                        <div id="tips-details">
+                        </div>
+                    </div>
+                    <div id="energy-tips" class="energy tip" style="display: none;"> 
+                        <h3>⚡ Enerji Tasarrufu İpuçları</h3>
+                        <div id="energy-tips-details">
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+        </div> 
+
+        <div class="container mt-5" id="favorites-section">
+            <hr> 
+            <h2><i class="fas fa-heart"></i> Favori Tariflerim</h2>
+            <div id="favorites-list" class="row">
+                <p id="no-favorites-message" class="col-12" style="display: none;">Henüz favori tarifiniz yok.</p>
+            </div>
+        </div>
+
+    </div> 
+
+    <footer class="footer"> 
+        <p class="slogan">Atıksız mutfak, sürdürülebilir yaşam...</p>
+    </footer>
+    <footer> 
+        <div class="team-links">
+            <h4>Ekibimiz</h4>
+            <ul>
+                <li>
+                    <a href="https://www.linkedin.com/in/alperen-g%C3%BCner-b347a7327/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> Alperen Güner
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/beyza-bo%C4%9Fu%C5%9F-b87577228/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> Beyza Boğuş
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/g%C3%B6kdeniz-dursun-01034a364/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> Gökdeniz Dursun
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/mahmutaktaş/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> Mahmut Aktaş
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/z%C3%BCleyha-%C3%A7i%C3%A7en-a3723a218/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i> Züleyha Çiçen
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <p>&copy; 2025 Tarif Sihirbazı. Tüm hakları saklıdır.</p>
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com" target="_blank" aria-label="X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle dark mode">🌙</button>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/splash.js"></script>   
+    <script src="js/ui.js"></script>       
+    <script src="js/script.js"></script>    
+</body>
+</html>
