@@ -6,7 +6,7 @@ Bu proje, kullanıcıların evdeki malzemeleriyle yaratıcı, kişiselleştirilm
 
 ## Temalar
 
-Bu proje aşağıdaki temalar etrafında şekillenmiştir:
+Bu proje aşağıdaki tema etrafında şekillenmiştir:
 
    **Sürdürülebilirlik Çözümleri:** Gıda israfını önleme, kaynakların verimli kullanımı ve enerji tasarrufu odaklıdır.
 
@@ -80,4 +80,4 @@ Herhangi bir katkıda bulunmak, hata bildirmek veya özellik önermek isterseniz
 
 ## Lisans
 
-Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına (eğer varsa) bakın veya MIT Lisansı metnini inceleyin.
+Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın veya MIT Lisansı metnini inceleyin.
